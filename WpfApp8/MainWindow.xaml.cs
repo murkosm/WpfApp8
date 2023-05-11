@@ -48,15 +48,29 @@ namespace WpfApp8
 
             DataContext = db.Products.Local.ToObservableCollection();
             Product product = new Product();
+            //я не смогла сделать qrcode, тут кринж какой-то
 
-            string str = "Id " + product.Id + "\n" + "Название: " + product.Name + "\n" + "Цена: " + product.Price + "₽" + "\n" + "Описание: " + product.Description;
-            using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
-            using (QRCodeData qrCodeData = qrGenerator.CreateQrCode(str, QRCodeGenerator.ECCLevel.Q))
-            using (QRCode qrCode = new QRCode(qrCodeData))
-            {
-                Bitmap qrCodeImage = qrCode.GetGraphic(20);
-            }
-          
+            //QRCodeGenerator qrGenerator = new QRCodeGenerator();
+
+
+            //foreach ()
+            //{
+            //    string str = "Id " + product.Id + "\n" + "Name: " + product.Name + "\n" + "Price: " + product.Price + "₽" + "\n" + "Description: " + product.Description;
+            //    QRCodeData data = qrGenerator.CreateQrCode(str, QRCodeGenerator.ECCLevel.Q);
+            //    QRCode qR = new QRCode(data);
+            //    BitmapImage qrCodeImage = new BitmapImage();
+
+            //    using (MemoryStream stream = new MemoryStream())
+            //    {
+            //        qR.GetGraphic(20).Save(stream, ImageFormat.Png);
+            //        stream.Seek(0, SeekOrigin.Begin);
+            //        qrCodeImage.BeginInit();
+            //        qrCodeImage.CacheOption = BitmapCacheOption.OnLoad;
+            //        qrCodeImage.StreamSource = stream;
+            //        qrCodeImage.EndInit();
+            //    }
+
+            //}
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -67,6 +81,7 @@ namespace WpfApp8
                 Product User = add.Product;
                 db.Products.Add(User);
                 db.SaveChanges();
+               
             }
         }
 
